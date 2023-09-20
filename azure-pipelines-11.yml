@@ -15,19 +15,15 @@ steps:
     versionSpec: '11'
     jdkArchitectureOption: 'x64'
     jdkSourceOption: 'LocalDirectory'
-    jdkDestinationDirectory: '/opt/homebrew/opt/openjdk@11'
-    cleanDestinationDirectory: false
-
-- task: Maven@3
+    jdkDestinationDirectory: '/opt/homebrew/opt/openjdk@11/bin'
+- task: Maven@4
   inputs:
     mavenPomFile: '/Users/patchavamahendranaidu/downloads/8/s/app/pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
+    javaHomeOption: 'JDKVersion'
+    mavenVersionOption: 'Default'
+    cleanDestinationDirectory: false
 - task: Veracode@3
   inputs:
     ConnectionDetailsSelection: 'Service Connection'
