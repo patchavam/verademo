@@ -14,7 +14,9 @@ steps:
   inputs:
     versionSpec: '11'
     jdkArchitectureOption: 'x64'
-    jdkSourceOption: 'PreInst'
+    jdkSourceOption: 'LocalDirectory'
+    jdkFile: '/opt/homebrew/opt/openjdk@11/bin'
+    cleanDestinationDirectory: false
 - task: Maven@4
   inputs:
     mavenPomFile: '/Users/patchavamahendranaidu/downloads/8/s/app/pom.xml'
