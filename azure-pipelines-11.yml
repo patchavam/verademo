@@ -26,7 +26,7 @@ steps:
     AnalysisService: 'veracode_US_Instance'
     veracodeAppProfile: 'new_azure'
     version: '$(build.buildNumber)'
-    filepath: '**.**.war'
+    filepath: '**/*.war'
     createProfile: true
     failBuildIfUploadAndScanBuildStepFails: true
     importResults: true
