@@ -10,28 +10,25 @@ pool:
   name: Default
 
 steps:
-- task: JavaToolInstaller@0
-  inputs:
-    versionSpec: '11'
-    jdkArchitectureOption: 'x64'
-    jdkSourceOption: 'LocalDirectory'
-    jdkFile: '/opt/homebrew/opt/openjdk@11/bin'
-    cleanDestinationDirectory: false
 - task: Maven@4
   inputs:
-    mavenPomFile: '/Users/patchavamahendranaidu/downloads/8/s/app/pom.xml'
+    mavenPomFile: 'app/pom.xml'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     javaHomeOption: 'JDKVersion'
     mavenVersionOption: 'Default'
-    cleanDestinationDirectory: false
+    mavenAuthenticateFeed: false
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: false
 - task: Veracode@3
   inputs:
     ConnectionDetailsSelection: 'Service Connection'
     AnalysisService: 'veracode_US_Instance'
-    veracodeAppProfile: '$(system.teamProject)'
+    veracodeAppProfile: 'new_azure'
     version: '$(build.buildNumber)'
-    filepath: '$(build.artifactstagingdirectory)'
+    filepath: '**.**.war'
+    createProfile: true
+    failBuildIfUploadAndScanBuildStepFails: true
     importResults: true
     failBuildOnPolicyFail: true
     maximumWaitTime: '60'
