@@ -15,7 +15,7 @@ steps:
     versionSpec: '11'
     jdkArchitectureOption: 'x64'
     jdkSourceOption: 'LocalDirectory'
-    jdkDestinationDirectory: '/opt/homebrew/opt/openjdk@11/bin'
+    jdkDestinationDirectory: '/opt/homebrew/opt/openjdk@11'
     cleanDestinationDirectory: false
 
 - task: Maven@3
